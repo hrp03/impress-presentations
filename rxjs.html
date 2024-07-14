@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RxJS</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    </link>
+    <link rel="stylesheet" href="css/prism.min.css">
+    <style rel="stylesheet">
+        body {
+            font-family: 'cabinSketchBold';
+        }
+
+        .h-main {
+            font-family: 'cabinSketchBold';
+        }
+
+        .impress-enabled .step {
+            margin: 0;
+            opacity: 0.4;
+
+            -webkit-transition: opacity 1s;
+            -moz-transition: opacity 1s;
+            -ms-transition: opacity 1s;
+            -o-transition: opacity 1s;
+            transition: opacity 1s;
+        }
+
+        .impress-enabled .step.active {
+            opacity: 1
+        }
+
+        .hp-name {
+            width: 632px;
+            font-size: 72px;
+        }
+
+        .lbl-rxjs {
+            font-size: 200px;
+        }
+
+        .lbl-definition {
+            width: 400px;
+            font-size: 48px;
+        }
+
+        .lbl-def-title {
+            font-size: 32px;
+        }
+
+        .sub-pad-32 {
+            padding-left: 32px;
+        }
+
+        .font-regular {
+            font-family: 'cabinSketchRegular';
+        }
+
+        .font-londrina {
+            font-family: 'londrinaSketchRegular';
+        }
+
+        .font-reenie {
+            font-family: 'reenieBeanieRegular';
+        }
+
+        .flex-gap-24 {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .gear-icon {
+            height: 200px;
+            position: absolute;
+            top: 230px;
+            left: 272px;
+        }
+
+        .inspired-by {
+            position: absolute;
+            left: -400px;
+            top: 277px;
+            font-size: 30px;
+        }
+
+        .inspired-by .title {
+            font-size: 42px;
+        }
+
+        .inspired-by .sub-title {}
+
+        .inspired-by .content {}
+
+        .lbl-concepts,
+        .lbl-observable {
+            font-size: 108px;
+        }
+
+        .concept-content {
+            transition: all 1s;
+            font-size: 32px;
+            width: 600px;
+        }
+
+        .sub-desc {
+            opacity: 0.6;
+        }
+
+        .instruction {
+            width: 600px;
+        }
+
+        .how-to {
+            font-size: 72px;
+        }
+
+        .ins-opt {
+            font-size: 40px;
+        }
+
+        .ins-opt .cmd {
+            opacity: 0.5;
+        }
+
+        .sub-heading {
+            font-size: 36px;
+        }
+
+        .code pre,
+        .code code {
+            background: none;
+        }
+
+        .list-title {
+            display: flex;
+            flex-direction: column;
+            font-size: 24px;
+            width: 280px;
+            gap: 16px;
+        }
+
+        .step:not(.present) .code * {
+            color: black;
+            transition: all .3s;
+        }
+
+        .language-js {
+            font-size: 24px !important;
+        }
+        .thank-you {
+            font-size: 108px;
+            opacity: 0;
+            transition: all .4s;
+        }
+        .step.active .thank-you { 
+            opacity: 1;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="impress-not-supported">
+
+    <div id="impress" data-transition-duration="1000" data-width="1920" data-height="1080" data-min-scale="1"
+        data-perspective="2000" data-scale="20">
+
+        <div class="step" data-x="2000" data-y="0" data-z="0">
+            <div class="hp-name">Himanshu Prajapati</div>
+        </div>
+ <!-- History -->
+ <div class="step" data-x="2000" data-y="-1000" data-z="0">
+    <div class="lbl-definition">Traditional approach of async programming</div>
+</div>
+
+<div class="step" data-x="1700" data-y="-1200" data-z="0">
+    <div class="lbl-observable font-londrina">Callback</div>
+    <div class="concept-content">
+        <div class="description">a function passed as an argument</div>
+        <div class="red">callback hell</div>
+    </div>
+</div>
+
+<div class="step" data-x="1100" data-y="-1200" data-z="0">
+    <div class="code">
+        <pre>
+<code class="language-js">
+//callback
+function A(){}
+function B(callbackFn){
+setTimeout(()=> callbackFn(), 5000);
+}
+
+B(A);
+</code>
+</pre>
+    </div>
+</div>
+
+<div class="step" data-x="2500" data-y="-1200" data-z="0">
+    <div class="lbl-observable font-londrina">Promises</div>
+    <div class="concept-content">
+        <div class="description">runs only once</div>
+        <div class="description">eager</div>
+        <div class="description">can't be cancelled (resolve/error)</div>
+    </div>
+</div>
+
+<div class="step" data-x="2500" data-y="-1400" data-z="0">
+    <div class="code">
+        <pre>
+<code class="language-js">
+new Promise((resolve, error) => {
+setTimeout(() => 
+resolve('Promise resolved'), 4000);
+});
+</code>
+</pre>
+    </div>
+</div>
+
+<!-- End History -->
+
+        <div class="step" data-x="1200" data-y="0" data-z="1500">
+            <div class="lbl-rxjs">RxJS</div>
+        </div>
+
+
+        <div class="step" data-x="1200" data-y="400" data-z="1500" data-rotate-x="180">
+            <div class="lbl-definition">
+                "a library for reactive programming using Observables, to make it easier to compose asynchronous or
+                callback-based code"
+            </div>
+        </div>
+
+        <div class="step" data-x="2000" data-y="300" data-z="1500" data-rotate-x="180">
+            <div class="lbl-definition">
+                <div class="lbl-def-title">for e.g. Asynchronous</div>
+                <div>Network calls</div>
+                <div>DOM Events</div>
+                <div>Animation</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="2000" data-y="1300" data-z="2000" data-rotate-x="180" data-rotate-z="90"
+            data-rotate-y="120">
+            <div class="lbl-definition flex-gap-24">
+                <div class="lbl-def-title font-regular">Provides</div>
+                <div class="lbl-def-title font-regular">One Core Type : <span class="h-main">Observable</span></div>
+                <div class="lbl-def-title">
+                    <span class="font-regular">Satellites Type</span>
+                    <div class="sub-pad-32">ObserverSchedulers</div>
+                    <div class="sub-pad-32">Schedulers</div>
+                    <div class="sub-pad-32">Subjects</div>
+                </div>
+                <div class="lbl-def-title font-regular">Operators</span></div>
+            </div>
+            <div>
+                <img class="gear-icon" src="images/gear.png">
+            </div>
+        </div>
+
+        <div class="step" data-x="1000" data-y="1000" data-z="2000" data-rotate-x="180" data-rotate-z="90"
+            data-rotate-y="120">
+
+            <img src="images/observer-pattern.svg">
+
+        </div>
+
+        <div class="step" data-x="2800" data-y="600" data-z="2000">
+            <div class="lbl-concepts font-londrina">Concepts</div>
+        </div>
+
+
+        <div class="step" data-x="2980" data-y="300" data-z="200">
+            <div class="lbl-observable font-londrina">Observable</div>
+            <div class="concept-content">
+                <div class="description">a function that creates an observer and attaches it to the source</div>
+                <div class="eg">e.g. events, http request, etc</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="3200" data-y="900" data-z="1600">
+            <div class="lbl-observable font-londrina">Observer</div>
+            <div class="concept-content">
+                <div class="description">an object with next(), error() and complete() methods</div>
+                <div class="eg">get called when there is an interaction/event occurs</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="1900" data-y="1120" data-z="-1600" data-rotate-z="90">
+            <div class="lbl-observable font-londrina">Subscription</div>
+            <div class="concept-content">
+                <div class="description">represents the execution of an Observable</div>
+                <div class="description">to execute the observable we need to subscribe to it</div>
+                <div class="eg">also be used to cancel the Subscription</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="2300" data-y="1200" data-z="-1000" data-rotate-y="70">
+            <div class="lbl-observable font-londrina">Operators</div>
+            <div class="concept-content">
+                <div class="description">a pure function</div>
+                <div class="eg">takes an observable as input and the returns the observable as output</div>
+                <div class="eg">Arrays functions</div>
+                <div class="eg">map, filter, reduce, evert, etc.</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="3500" data-y="600" data-z="200" data-rotate-x="40">
+            <div class="lbl-observable font-londrina">Subject</div>
+            <div class="concept-content">
+                <div class="description">an observable that can multicast <span class="sub-desc">i.e. talk to many
+                        observers</span></div>
+            </div>
+        </div>
+
+        <div class="step" data-x="200" data-y="500" data-z="0">
+            <div class="instruction">
+                <div class="how-to">How to install?</div>
+                <div class="ins-opt">node <span class="cmd">npm install rxjs</span></div>
+                <div class="ins-opt">CDN</div>
+            </div>
+
+        </div>
+
+        <div class="step" data-x="3480" data-y="100" data-z="100" data-z="800">
+            <div class="lbl-observable font-londrina">Observable</div>
+            <div class="list-title">
+                <div>Executed when have atleast a one observer</div>
+                <div>Creates a copy of data for each observer</div>
+                <div>Uni-directional (obserer cannot assign value to observable)</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="4180" data-y="100" data-z="800">
+            <div class="sub-heading">Create Observable</div>
+            <div class="code">
+                <pre>
+<code class="language-js">
+import { Observable } from 'rxjs';
+
+let observable = Observable.create(
+    function(observer) {
+        observer.next(1);
+    }
+);
+
+observable.subscribe(value => console.log(value));
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="step" data-x="3400" data-y="1100" data-z="0" data-rotate-x="120" data-rotate-z="20">
+            <div class="lbl-observable font-londrina">Subject</div>
+            <div class="list-title">
+                <div>Special type of an Observable</div>
+                <div>An event emitter</div>
+                <div>Used to multicast</div>
+                <div>Same data gets shared between observers</div>
+                <div>Bi-directional (obserer can assign values observable)</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="4100" data-y="1000" data-z="100" data-rotate-x="120" data-rotate-z="20">
+            <div class="code">
+                <pre>
+<code class="language-js">
+import { Subject } from 'rxjs';
+
+let subject = new Subject();
+
+subject.subscribe(value => console.log(value));
+subject.next(1);
+
+subject.subscribe(value => console.log(value));
+subject.next(2);
+</code>
+</pre>
+            </div>
+
+        </div>
+
+        <div class="step" data-x="-1000" data-y="500" data-z="0">
+            <div class="lbl-observable font-londrina">Operators</div>
+        </div>
+
+        <div class="step" data-x="-1000" data-y="800" data-z="0">
+            <div class="list-title">
+                <div>Simple pure functions</div>
+                <div>Deals with collections</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="-700" data-y="800" data-z="0">
+            <div class="list-title">
+                <div>To use operator we need to use pipe</div>
+            </div>
+        </div>
+
+        <div class="step" data-x="-700" data-y="1000" data-z="0" data-transition-duration="300">
+            <div class="code">
+                <pre>
+<code class="language-js">
+    let obs = of(1,2,3);
+    obs.pipe(
+       operator1(),
+       operator2(),
+       operator3(),
+       operator3(),
+    )
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="step" data-x="-715" data-y="1090" data-z="0" data-transition-duration="300">
+            <div class="code">
+                <pre>
+<code class="language-js">
+    
+    .subscribe(...);
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="step" data-x="-715" data-y="1090" data-z="0" data-rotate-x="90">
+            <div class="code">
+                <pre>
+<code class="language-js">
+    
+import { of } from 'rxjs';
+import { map, reduce, filter } from 'rxjs/operators';
+
+let numbers = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+numbers.pipe(
+   filter(x => x % 2 === 0),
+   reduce((acc, one) => acc + one, 0)
+).subscribe(x => console.log(x));
+</code>
+</pre>
+            </div>
+        </div>
+
+        <div class="step" data-x="2000" data-y="500" data-z="-100" data-scale="5">
+            <div class="thank-you">Practice</div>
+        </div>
+
+    </div>
+
+
+    <!-- <div class="inspired-by">
+        <div class="title font-londrina">Inspired by</div>
+        <div class="sub-title">Arrays functions</div>
+        <div class="content">map, filter, reduce, evert, etc.</div>
+
+    </div> -->
+
+
+    <script src="js/prism.min.js"></script>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+</body>
+
+</html>
